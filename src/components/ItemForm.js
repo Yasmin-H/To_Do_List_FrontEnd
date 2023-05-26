@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const ItemForm = ( {postItem} ) => {
 
-    const [newItem, setNewItem] = useState({taskName: "", dueDate: "", priority: "", toDoList:{}})
+    const [newItem, setNewItem] = useState({taskName: "", dueDate: "", priority: "", listId:1})
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
