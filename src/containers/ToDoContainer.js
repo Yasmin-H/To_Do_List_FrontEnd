@@ -10,7 +10,7 @@ const ToDoContainer = () => {
         const fetchLists = async () => {
             const response = await fetch("http://localhost:8080/lists");
             const data = await response.json();
-            setToDoLists([data]);
+            setToDoLists(data);
         }
         fetchLists()
     }, [])
