@@ -12,8 +12,6 @@ const UserForm = ({users, postUser}) => {
         } else{
             console.log("user already exists");
         }
-    
-    
     }
 
     const handleChange = (event) => {
