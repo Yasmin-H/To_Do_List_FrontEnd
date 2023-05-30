@@ -8,7 +8,7 @@ const UserForm = ({users, postUser}) => {
         event.preventDefault()
         if(users.findIndex((user) => user.name === newUser.name) < 0){
             postUser(newUser);
-            console.log("user added");
+            console.log("user added")
         } else{
             console.log("user already exists");
         }
