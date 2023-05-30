@@ -18,7 +18,7 @@ const Item = ({item, deleteItem, selectItemForEditing, updateCompleted}) => {
         <button onClick={() => selectItemForEditing(item)}>Edit</button>
         <button onClick={() => deleteItem(item.id)}>Delete</button>
         <div>
-            <input  type="checkbox" id="completed" name="completed"  onChange={changeCompleteStatus}  />
+            <input  type="checkbox" name="completed"  onChange={changeCompleteStatus} checked={isCompleted} />
             <label for="completed">Completed</label>
 
         </div>
