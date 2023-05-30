@@ -34,12 +34,12 @@ const ItemContainer = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedItem),
         })
-        const editedItem = response.json();
+        const editedItem = await response.json();
         const itemsToKeep = items.filter((item) => item.id !== updatedItem.id)
         setItems([...itemsToKeep, editedItem])
-    
+
         setItemToUpdate(null);
-      }
+    }
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -51,12 +51,12 @@ const ItemContainer = () => {
     }, [])
 
     const selectItemForEditing = (item) => {
-        setItemToUpdate(item);
-      }
+          setItemToUpdate(item);
+    }
 
       const saveItem = (item) => {
         item.id ? updateItem(item): postItem(item);
-      }
+    }
 
     return ( 
         <>
