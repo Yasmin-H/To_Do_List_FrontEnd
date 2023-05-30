@@ -12,8 +12,10 @@ const ToDoContainer = () => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newList)
         })
-        const savedList = await response.json();
+        const allLists = await response.json();
+        const savedList = allLists.pop();
         setToDoLists([...toDoLists, savedList])
+        console.log(savedList)
     }
     
     useEffect(() => {
