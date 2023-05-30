@@ -7,6 +7,7 @@ const ItemContainer = () => {
 
     const[items, setItems] = useState([]);
     const[itemToUpdate, setItemToUpdate] = useState(null);
+    const [isCompleted , setIsCompleted] = useState(null);
 
     const postItem = async (newItem) => {
         const response = await fetch("http://localhost:8080/items", {
@@ -42,10 +43,14 @@ const ItemContainer = () => {
     }
 
     const updateCompleted = async (id) => {
-        const response = await fetch(`http://localhost:8080/items/${id}`, {
+        const response = await fetch(`http://localhost:8080/items/${id}?completed=${isCompleted}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" }
         })
+
+        setIsCompleted(!isCompleted);
+
+
     }
 
     useEffect(() => {
