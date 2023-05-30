@@ -43,14 +43,14 @@ const ItemContainer = () => {
     }
 
     const updateCompleted = async (id) => {
-        const response = await fetch(`http://localhost:8080/items/${id}?completed=${isCompleted}`, {
+        const response = await fetch(`http://localhost:8080/items/${id}?completed=${!isCompleted}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" }
         })
-
+        const updatedItem = await response.json();
+        const updatedItems = items.map((item) => item.id === updatedItem.id ? updatedItem : item);
+        setItems(updatedItems);
         setIsCompleted(!isCompleted);
-
-
     }
 
     useEffect(() => {
