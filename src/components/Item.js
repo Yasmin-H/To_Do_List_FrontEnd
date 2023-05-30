@@ -1,9 +1,13 @@
 import { useState } from "react";
 
-const Item = ({item, deleteItem, selectItemForEditing,updateCompleted}) => {
+const Item = ({item, deleteItem, selectItemForEditing, updateCompleted}) => {
+
+    const[isCompleted , setIsCompleted] = useState(item.completed);
+
 
     const changeCompleteStatus = () => {
-        updateCompleted(item.id)
+        setIsCompleted(!isCompleted)
+        updateCompleted(isCompleted, item.id)
     }
 
     return ( 
