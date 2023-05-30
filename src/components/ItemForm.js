@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
-const ItemForm = ( {postItem} ) => {
+const ItemForm = ( {postItem, itemToUpdate} ) => {
 
     const [newItem, setNewItem] = useState({taskName: "", dueDate: "", priority: "", listId:1})
+
+    useEffect(() => {
+        if(itemToUpdate !== null && itemToUpdate.id){
+          setNewItem(itemToUpdate);
+        }
+    }, [itemToUpdate])
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -31,14 +37,17 @@ const ItemForm = ( {postItem} ) => {
                 name="dueDate"
                 value={newItem.dueDate}/> 
 
-            <input type="text"
-                placeholder="priority"
-                onChange={handleChange}
-                name="priority"
-                value={newItem.priority}/> 
+            <select class="type" name="priority" onChange={handleChange}>
+                <option disabled-value="">priority</option>
+                <option value="LOW">LOW</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="HIGH">HIGH</option>
+            </select>
 
             <button>submit</button>  
         </form>
+
+        <button>SAVE</button>
         
         </>
     );
