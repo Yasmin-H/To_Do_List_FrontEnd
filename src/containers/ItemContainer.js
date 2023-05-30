@@ -54,10 +54,14 @@ const ItemContainer = () => {
         setItemToUpdate(item);
       }
 
+      const saveItem = (item) => {
+        item.id ? updateItem(item): postItem(item);
+      }
+
     return ( 
         <>
          <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing}/>
-         <ItemForm postItem={postItem} itemToUpdate={itemToUpdate}/>
+         <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem}/>
         </>
      );
 }

@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-const ItemForm = ( {postItem, itemToUpdate} ) => {
+const ItemForm = ( {postItem, itemToUpdate, saveItem} ) => {
 
     const [newItem, setNewItem] = useState({taskName: "", dueDate: "", priority: "", listId:1})
 
@@ -12,7 +12,8 @@ const ItemForm = ( {postItem, itemToUpdate} ) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        postItem(newItem);
+        saveItem(newItem);
+        setNewItem({taskName: "", dueDate: "", priority: "", listId:1})
     }
 
     const handleChange = (event) => {
