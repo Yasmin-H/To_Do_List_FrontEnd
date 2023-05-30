@@ -41,6 +41,13 @@ const ItemContainer = () => {
         setItemToUpdate(null);
     }
 
+    const updateCompleted = async (id) => {
+        const response = await fetch(`http://localhost:8080/items/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" }
+        })
+    }
+
     useEffect(() => {
         const fetchItems = async () => {
             const response = await fetch("http://localhost:8080/items");
@@ -60,7 +67,7 @@ const ItemContainer = () => {
 
     return ( 
         <>
-         <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing}/>
+         <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing} updateCompleted={updateCompleted}/>
          <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem}/>
         </>
      );

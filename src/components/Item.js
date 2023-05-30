@@ -1,4 +1,10 @@
-const Item = ({item, deleteItem, selectItemForEditing}) => {
+import { useState } from "react";
+
+const Item = ({item, deleteItem, selectItemForEditing,updateCompleted}) => {
+
+    const changeCompleteStatus = () => {
+        updateCompleted(item.id)
+    }
 
     return ( 
         <>
@@ -7,6 +13,12 @@ const Item = ({item, deleteItem, selectItemForEditing}) => {
         <h3>{item.priority}</h3>
         <button onClick={() => selectItemForEditing(item)}>Edit</button>
         <button onClick={() => deleteItem(item.id)}>Delete</button>
+        <div>
+            <input  type="checkbox" id="completed" name="completed"  onChange={changeCompleteStatus}  />
+            <label for="completed">Completed</label>
+
+        </div>
+       
         <hr/>
         </>
      );
