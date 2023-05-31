@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import UserForm from "../components/UserForm";
+import UserLoginForm from "../components/UserLoginForm";
 
 const UserContainer = ({onJoin}) => {
 
     const [users , setUsers] = useState([]);
+
+    const [login, setLogin] = useState(false);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -24,12 +27,21 @@ const UserContainer = ({onJoin}) => {
         setUsers([...users, savedUser])
     }
 
+    const loginClick = () => {
+      setLogin(true);
+    }
+
+    const renderedForm = () => {
+      return login ? <UserLoginForm users={users} onJoin={onJoin}/>
+            :  <UserForm users={users} postUser={postUser} onJoin={onJoin}/> 
+    }
+  
+
     return (
         <>
-        <p>Hello from UserContainer!</p> 
-        <UserForm users={users} postUser={postUser} onJoin={onJoin}/>   
+        <button onClick={loginClick}>Login</button>
+        {renderedForm()}
         </>
-
         );
 }
  
