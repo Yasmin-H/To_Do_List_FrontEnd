@@ -10,7 +10,7 @@ function App() {
 
   const renderedContainer = () => {
     return container.user ? <UserContainer onJoin={() => setContainer({user:false, toDo:true, item:false})}/>
-          : container.toDo ? <ToDoContainer/>
+          : container.toDo ? <ToDoContainer  onEdit={() => setContainer({user:false, toDo:false, item:true})}/>
           : container.item ? <ItemContainer/>
           : null;
   }

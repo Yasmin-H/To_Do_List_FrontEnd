@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ToDoList from "../components/ToDoList";
 
-const ToDoContainer = () => {
+const ToDoContainer = ({onEdit}) => {
 
     const[toDoLists, setToDoLists] = useState([]);
     const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [1], userIds: [1]})
@@ -44,6 +44,7 @@ const ToDoContainer = () => {
         copiedList[propertyName]= event.target.value;
         setNewToDo(copiedList);
 
+
     }
     return ( 
         <>
@@ -58,7 +59,7 @@ const ToDoContainer = () => {
 
         </form>
         <button>Show completed lists</button>
-        <ToDoList toDoLists={toDoLists}/>
+        <ToDoList toDoLists={toDoLists} onEdit={onEdit}/>
         </>
      );
 }

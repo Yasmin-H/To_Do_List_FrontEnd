@@ -1,9 +1,11 @@
-const ToDo = ({toDo}) => {
+const ToDo = ({toDo, onEdit}) => {
 
+
+ 
     return ( 
         <>
         <h2>{toDo.listName}</h2>
-        <button>Edit</button>
+        <button onClick={() => onEdit()}>Edit</button>
         <button>Delete</button>
         </>
      );
