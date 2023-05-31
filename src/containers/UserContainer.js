@@ -35,11 +35,15 @@ const UserContainer = ({onJoin}) => {
       return login ? <UserLoginForm users={users} onJoin={onJoin}/>
             :  <UserForm users={users} postUser={postUser} onJoin={onJoin}/> 
     }
-  
+    
+    const renderLoginButton = () => {
+        return !login ? <button onClick={loginClick}>Login</button>
+            : null;
+    }
 
     return (
         <>
-        <button onClick={loginClick}>Login</button>
+        {renderLoginButton()}
         {renderedForm()}
         </>
         );
