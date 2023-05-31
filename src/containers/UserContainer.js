@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import UserForm from "../components/UserForm";
 
-const UserContainer = () => {
+const UserContainer = ({onJoin}) => {
 
     const [users , setUsers] = useState([]);
 
@@ -27,7 +27,7 @@ const UserContainer = () => {
     return (
         <>
         <p>Hello from UserContainer!</p> 
-        <UserForm users={users} postUser={postUser}/>   
+        <UserForm users={users} postUser={postUser} onJoin={onJoin}/>   
         </>
 
         );

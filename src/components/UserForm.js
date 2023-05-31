@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const UserForm = ({users, postUser}) => {
+const UserForm = ({users, postUser, onJoin}) => {
 
     const [newUser, setNewUser] = useState({name: "", masterList: []});
 
@@ -9,10 +9,13 @@ const UserForm = ({users, postUser}) => {
         if(users.findIndex((user) => user.name === newUser.name) < 0){
             postUser(newUser);
             console.log("user added")
+            onJoin();
         } else{
             console.log("user already exists");
         }
+
     }
+
 
     const handleChange = (event) => {
         let propertyName = event.target.name;

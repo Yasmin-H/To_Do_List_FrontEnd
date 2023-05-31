@@ -9,7 +9,7 @@ function App() {
   const [container, setContainer ] = useState({user:true, toDo:false, item:false});
 
   const renderedContainer = () => {
-    return container.user ? <UserContainer />
+    return container.user ? <UserContainer onJoin={() => setContainer({user:false, toDo:true, item:false})}/>
           : container.toDo ? <ToDoContainer/>
           : container.item ? <ItemContainer/>
           : null;
