@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ToDoList from "../components/ToDoList";
 import "../cssFiles/toDoCssFiles/ToDoContainer.css";
 
-const ToDoContainer = ({onEdit, onLogout}) => {
+const ToDoContainer = ({onEdit, onLogout, currentUser}) => {
 
     const[toDoLists, setToDoLists] = useState([]);
     const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [1], userIds: [1]})
@@ -45,10 +45,11 @@ const ToDoContainer = ({onEdit, onLogout}) => {
         const fetchLists = async () => {
             const response = await fetch(`http://localhost:8080/lists?completed=${completed}`);
             const data = await response.json();
-            setToDoLists(data);
+            const usersLists = data.filter((toDoList) => { return toDoList.users.some((user) => user.id === currentUser.id)});
+            setToDoLists(usersLists);
         }
         fetchLists()
-    }, [completed])
+    }, [completed, currentUser])
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
