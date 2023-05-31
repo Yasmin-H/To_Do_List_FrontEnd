@@ -30,7 +30,7 @@ const ToDoContainer = ({onEdit, onLogout}) => {
     }
 
     const updateCompleted = async (isCompleted, id) => {
-        const response = await fetch(`http://localhost:8080/lists/${id}?completed=${!isCompleted}`, {
+        const response = await fetch(`http://localhost:8080/lists/complete/${id}?completed=${!isCompleted}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" }
         })
@@ -47,7 +47,7 @@ const ToDoContainer = ({onEdit, onLogout}) => {
             setToDoLists(data);
         }
         fetchLists()
-    }, [])
+    }, [completed])
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
@@ -81,7 +81,7 @@ const ToDoContainer = ({onEdit, onLogout}) => {
             <button type="submit">Create new list</button>
 
         </form>
-        <button onClick={()=> setCompleted(!completed)}>Show completed lists</button>
+        <button onClick={()=> setCompleted(!completed)}>{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
         <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted}/>
         </>
      );
