@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ItemContainer from './containers/ItemContainer';
 import ToDoContainer from './containers/ToDoContainer';
 import UserContainer from './containers/UserContainer';
+import '../src/cssFiles/App.css'
 
 function App() {
 
@@ -15,10 +16,12 @@ function App() {
   }
 
   return (
-    <>
+
+    <div class="background">
     <h1>To Do List</h1>
     {renderedContainer()}
-    </>
+    </div>
+    
   );
 }
 
