@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UserForm from "../components/UserForm";
 import UserLoginForm from "../components/UserLoginForm";
+import '../cssFiles/userCssFiles/UserContainer.css';
 
 const UserContainer = ({onJoin}) => {
 

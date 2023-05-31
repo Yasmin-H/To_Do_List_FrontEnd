@@ -51,13 +51,9 @@ const ToDoContainer = ({onEdit, onLogout}) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        // if(toDoLists.findIndex((toDoLists) => toDoLists.name === newToDo.name) < 0){
-        //     postList(newToDo);
-        //     console.log("list added");
-        // } else{
-        //     console.log("list already exists");
-        // }
-        postList(newToDo);
+        if(newToDo.listName !== ""){
+            postList(newToDo);
+        }
     }
 
     const handleChange = (event) => {
