@@ -1,4 +1,4 @@
-const ToDo = ({toDo, onEdit}) => {
+const ToDo = ({toDo, onEdit, deleteList}) => {
 
 
  
@@ -6,7 +6,7 @@ const ToDo = ({toDo, onEdit}) => {
         <>
         <h2>{toDo.listName}</h2>
         <button onClick={() => onEdit()}>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => deleteList(toDo.id)}>Delete</button>
         </>
      );
 }

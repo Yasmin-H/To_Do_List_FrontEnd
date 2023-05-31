@@ -47,8 +47,6 @@ const ItemForm = ( {postItem, itemToUpdate, saveItem} ) => {
 
             <button>submit</button>  
         </form>
-
-        <button>SAVE</button>
         
         </>
     );

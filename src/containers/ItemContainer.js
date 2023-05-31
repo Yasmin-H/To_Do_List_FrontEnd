@@ -3,7 +3,7 @@ import ItemList from "../components/ItemList";
 import ItemForm from "../components/ItemForm";
 
 
-const ItemContainer = () => {
+const ItemContainer = ({onSave}) => {
 
     const[items, setItems] = useState([]);
     const[itemToUpdate, setItemToUpdate] = useState(null);
@@ -72,6 +72,7 @@ const ItemContainer = () => {
         <>
          <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing} updateCompleted={updateCompleted}/>
          <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem}/>
+         <button onClick={()=> onSave()}>Save</button>
         </>
      );
 }

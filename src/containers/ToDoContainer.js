@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ToDoList from "../components/ToDoList";
 
-const ToDoContainer = ({onEdit}) => {
+const ToDoContainer = ({onEdit, onLogout}) => {
 
     const[toDoLists, setToDoLists] = useState([]);
     const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [1], userIds: [1]})
@@ -16,6 +16,16 @@ const ToDoContainer = ({onEdit}) => {
         const savedList = allLists.pop();
         setToDoLists([...toDoLists, savedList])
         console.log(savedList)
+    }
+
+    const deleteList = async (id) => {
+        const response = await fetch(`http://localhost:8080/lists/${id}`, {
+            method: "DELETE",
+            headers: {'Content-Type': 'application/json'}
+        })
+
+        const newLists = toDoLists.filter((toDoList) => toDoList.id !== id);
+        setToDoLists(newLists);
     }
     
     useEffect(() => {
@@ -48,6 +58,7 @@ const ToDoContainer = ({onEdit}) => {
     }
     return ( 
         <>
+        <button onClick={()=> onLogout()}>Logout</button>
          <form onSubmit={handleFormSubmit}>
             <input 
             type="text"
@@ -59,7 +70,7 @@ const ToDoContainer = ({onEdit}) => {
 
         </form>
         <button>Show completed lists</button>
-        <ToDoList toDoLists={toDoLists} onEdit={onEdit}/>
+        <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList}/>
         </>
      );
 }
