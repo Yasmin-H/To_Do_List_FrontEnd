@@ -5,6 +5,7 @@ const ToDoContainer = ({onEdit, onLogout}) => {
 
     const[toDoLists, setToDoLists] = useState([]);
     const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [1], userIds: [1]})
+    const [completed, setCompleted] = useState(false);
 
     const postList = async (newList) => {
         const response = await fetch("http://localhost:8080/lists", {
@@ -27,10 +28,21 @@ const ToDoContainer = ({onEdit, onLogout}) => {
         const newLists = toDoLists.filter((toDoList) => toDoList.id !== id);
         setToDoLists(newLists);
     }
+
+    const updateCompleted = async (isCompleted, id) => {
+        const response = await fetch(`http://localhost:8080/lists/${id}?completed=${!isCompleted}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" }
+        })
+        const updatedList = await response.json();
+        const updatedLists = toDoLists.map((toDoList) => toDoList.id === updatedList.id ? updatedList : toDoList);
+        setToDoLists(updatedLists);
+    }
+
     
     useEffect(() => {
         const fetchLists = async () => {
-            const response = await fetch("http://localhost:8080/lists");
+            const response = await fetch(`http://localhost:8080/lists?completed=${completed}`);
             const data = await response.json();
             setToDoLists(data);
         }
@@ -69,8 +81,8 @@ const ToDoContainer = ({onEdit, onLogout}) => {
             <button type="submit">Create new list</button>
 
         </form>
-        <button>Show completed lists</button>
-        <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList}/>
+        <button onClick={()=> setCompleted(!completed)}>Show completed lists</button>
+        <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted}/>
         </>
      );
 }
