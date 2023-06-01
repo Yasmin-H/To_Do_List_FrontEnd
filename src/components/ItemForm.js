@@ -25,7 +25,7 @@ const ItemForm = ( {postItem, itemToUpdate, saveItem} ) => {
 
     return ( 
         <>
-        <form onSubmit={handleFormSubmit}>
+        <form className="form" onSubmit={handleFormSubmit}>
             <input type="text"
                 placeholder="task name"
                 onChange={handleChange}
