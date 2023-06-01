@@ -16,12 +16,16 @@ const ToDo = ({toDo, onEdit, deleteList, updateCompleted, selectToDo}) => {
  
     return ( 
         <>
+        <div class="list">
         <h2>{toDo.listName}</h2>
-        <button onClick={() => clickEdit()}>Edit</button>
-        <button onClick={() => deleteList(toDo.id)}>Delete</button>
 
+        <div class="bottom-buttons">
+        <button onClick={() => clickEdit()} class="edit-button">Edit</button>
+        <button onClick={() => deleteList(toDo.id)} class="delete-button">Delete</button>
         <input type="checkbox" name="completed" onChange={changeCompleteStatus} checked={isCompleted} />
         <label for="completed">Completed</label>
+        </div>
+        </div>
         </>
      );
 }

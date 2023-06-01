@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ToDoList from "../components/ToDoList";
+import "../cssFiles/toDoCssFiles/ToDoContainer.css";
 
 const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
 
@@ -69,7 +70,9 @@ const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
 
     return ( 
         <>
-        <button onClick={()=> onLogout()}>Logout</button>
+
+        <section class="background-colour">
+        <button onClick={()=> onLogout()} class="corner-button">Logout</button>
         <form onSubmit={handleFormSubmit}>
             <input 
             type="text"
@@ -77,11 +80,15 @@ const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
             value={newToDo.listName}
             name="listName"
             onChange={handleChange}/>
-            <button type="submit">Create new list</button>
+
+            <button type="submit" class="first-button">Create new list</button>
 
         </form>
-        <button onClick={()=> setCompleted(!completed)}>{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
+        <button onClick={()=> setCompleted(!completed)} class="second-button">{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
+        <div class="listContainer">
         <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted} selectToDo={selectToDo}/>
+        </div>
+        </section>
         </>
      );
 }

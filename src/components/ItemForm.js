@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import "../cssFiles/itemCssFiles/ItemForm.css";
 
 const ItemForm = ( {postItem, itemToUpdate, saveItem, currentToDo} ) => {
 
@@ -25,7 +26,7 @@ const ItemForm = ( {postItem, itemToUpdate, saveItem, currentToDo} ) => {
 
     return ( 
         <>
-        <form onSubmit={handleFormSubmit}>
+        <form className="form" onSubmit={handleFormSubmit}>
             <input type="text"
                 placeholder="task name"
                 onChange={handleChange}

@@ -3,6 +3,7 @@ import ItemContainer from './containers/ItemContainer';
 import ToDoContainer from './containers/ToDoContainer';
 import UserContainer from './containers/UserContainer';
 
+
 function App() {
 
   const [container, setContainer ] = useState({user:true, toDo:false, item:false});
@@ -29,10 +30,11 @@ function App() {
   }
 
   return (
-    <>
+    <div class="background">
     <h1>To Do List</h1>
     {renderedContainer()}
-    </>
+    </div>
+    
   );
 }
 

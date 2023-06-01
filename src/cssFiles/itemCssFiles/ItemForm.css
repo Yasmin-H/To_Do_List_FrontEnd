@@ -1,0 +1,44 @@
+  .form input{
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .type {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .form button{
+    background-color: #ea526f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .form button:hover{
+    background-color: #FF8A5B;
+  }
+
+  .form {
+    margin: auto;
+    padding: 20px;
+    background-color: #fceade;
+    border-radius: 5px;
+  }
+
+
+  
+  
+  
+  

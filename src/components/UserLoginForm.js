@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../cssFiles/userCssFiles/UserLoginForm.css";
+
 
 const UserLoginForm = ({users, onJoin, selectUser}) => {
 
@@ -26,21 +28,39 @@ const UserLoginForm = ({users, onJoin, selectUser}) => {
     }
 
 
-    return ( 
-        <>
-        <form id= "login" onSubmit={handleFormSubmit}>
-            <input 
-            type="text"
-            placeholder="enter name..."
-            value={oldUser.name}
-            name="name"
-            onChange={handleChange}/>
-            <button type="submit">Login</button>
+    // return ( 
+    //     <>
+    //     <form id= "login" onSubmit={handleFormSubmit}>
+    //         <input 
+    //         type="text"
+    //         placeholder="enter name..."
+    //         value={oldUser.name}
+    //         name="name"
+    //         onChange={handleChange}/>
+    //         <button type="submit">Login</button>
 
-        </form>
+    //     </form>
         
-        </>
-     );
+    //     </>
+    //  );
+
+
+
+    return ( 
+        <div className="user-login-form">
+          <form id="login" onSubmit={handleFormSubmit}>
+            <input 
+              type="text"
+              placeholder="enter name..."
+              value={oldUser.name}
+              name="name"
+              onChange={handleChange}
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      );
+      
 }
  
 export default UserLoginForm;
