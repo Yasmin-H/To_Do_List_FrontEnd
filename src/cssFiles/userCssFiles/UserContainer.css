@@ -1,0 +1,10 @@
+.user-container {
+  background-color: #FCEADE;
+}
+
+.login-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+}

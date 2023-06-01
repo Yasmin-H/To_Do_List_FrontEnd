@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../cssFiles/userCssFiles/UserForm.css";
+
 
 const UserForm = ({users, postUser, onJoin}) => {
 
@@ -25,22 +27,24 @@ const UserForm = ({users, postUser, onJoin}) => {
 
     }
 
-
     return ( 
-        <>
-        <form onSubmit={handleFormSubmit}>
+        <div className="user-form">
+          <form onSubmit={handleFormSubmit}>
             <input 
-            type="text"
-            placeholder="enter name..."
-            value={newUser.name}
-            name="name"
-            onChange={handleChange}/>
+              type="text"
+              placeholder="enter name..."
+              value={newUser.name}
+              name="name"
+              onChange={handleChange}
+            />
             <button type="submit">Join</button>
+          </form>
+        </div>
+      );
+      
 
-        </form>
-        
-        </>
-     );
+
+
 }
  
 export default UserForm;

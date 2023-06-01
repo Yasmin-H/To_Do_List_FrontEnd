@@ -1,0 +1,21 @@
+.user-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* .user-form input,
+.user-form button {
+  margin-bottom: 10px;
+} */
+
+
+.user-form input {
+  background-color: orange;
+}
+
+.user-form button {
+  background-color: blue;
+}
