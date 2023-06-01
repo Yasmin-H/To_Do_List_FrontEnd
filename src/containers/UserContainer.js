@@ -4,7 +4,7 @@ import UserLoginForm from "../components/UserLoginForm";
 import "../cssFiles/userCssFiles/UserContainer.css";
 
 
-const UserContainer = ({onJoin}) => {
+const UserContainer = ({onJoin, selectUser}) => {
 
     const [users , setUsers] = useState([]);
 
@@ -34,8 +34,8 @@ const UserContainer = ({onJoin}) => {
     }
 
     const renderedForm = () => {
-      return login ? <UserLoginForm users={users} onJoin={onJoin}/>
-            :  <UserForm users={users} postUser={postUser} onJoin={onJoin}/> 
+      return login ? <UserLoginForm users={users} onJoin={onJoin} selectUser={selectUser}/>
+            :  <UserForm users={users} postUser={postUser} onJoin={onJoin} selectUser={selectUser}/> 
     }
     
     const renderLoginButton = () => {

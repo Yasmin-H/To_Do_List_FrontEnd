@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../cssFiles/userCssFiles/UserForm.css";
 
 
-const UserForm = ({users, postUser, onJoin}) => {
+const UserForm = ({users, postUser, onJoin, selectUser}) => {
 
     const [newUser, setNewUser] = useState({name: "", masterList: []});
 
@@ -11,6 +11,7 @@ const UserForm = ({users, postUser, onJoin}) => {
         if(users.findIndex((user) => user.name === newUser.name) < 0){
             postUser(newUser);
             console.log("user added")
+            selectUser(newUser)
             onJoin();
         } else{
             console.log("user already exists");

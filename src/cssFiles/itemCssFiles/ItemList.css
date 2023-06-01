@@ -1,0 +1,30 @@
+.item-list {
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.item{
+    background-color: #fceade;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+  
+.item h3 {
+    margin: 0;
+}
+
+.item button { 
+    background-color: #ff8a5b;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.item button:hover {
+    background-color: #ea526f;
+}
+
+  

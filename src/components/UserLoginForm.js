@@ -2,14 +2,16 @@ import { useState } from "react";
 import "../cssFiles/userCssFiles/UserLoginForm.css";
 
 
-const UserLoginForm = ({users, onJoin}) => {
+const UserLoginForm = ({users, onJoin, selectUser}) => {
 
     const [oldUser, setOldUser] = useState({name: "", masterList: []});
 
     const handleFormSubmit = (event) => {
-        event.preventDefault()
-        if(users.findIndex((user) => user.name === oldUser.name) >= 0){
+        event.preventDefault();
+        const user = users.find((user) => user.name === oldUser.name);
+        if(user){
             console.log("user found")
+            selectUser(user)
             onJoin();
         } else{
             console.log("user does not exist");

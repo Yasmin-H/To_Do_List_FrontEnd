@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import ToDoList from "../components/ToDoList";
+import "../cssFiles/toDoCssFiles/ToDoContainer.css";
 
-const ToDoContainer = ({onEdit, onLogout}) => {
+const ToDoContainer = ({onEdit, onLogout, currentUser}) => {
 
     const[toDoLists, setToDoLists] = useState([]);
     const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [1], userIds: [1]})
@@ -44,10 +45,11 @@ const ToDoContainer = ({onEdit, onLogout}) => {
         const fetchLists = async () => {
             const response = await fetch(`http://localhost:8080/lists?completed=${completed}`);
             const data = await response.json();
-            setToDoLists(data);
+            const usersLists = data.filter((toDoList) => { return toDoList.users.some((user) => user.id === currentUser.id)});
+            setToDoLists(usersLists);
         }
         fetchLists()
-    }, [completed])
+    }, [completed, currentUser])
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
@@ -66,19 +68,25 @@ const ToDoContainer = ({onEdit, onLogout}) => {
     }
     return ( 
         <>
-        <button onClick={()=> onLogout()}>Logout</button>
-         <form onSubmit={handleFormSubmit}>
+        <section class="background-colour">
+        
+        <button onClick={()=> onLogout()} class="corner-button">Logout</button>
+        <form onSubmit={handleFormSubmit}>
             <input 
             type="text"
             placeholder="enter list name"
             value={newToDo.listName}
             name="listName"
             onChange={handleChange}/>
-            <button type="submit">Create new list</button>
+
+            <button type="submit" class="first-button">Create new list</button>
 
         </form>
-        <button onClick={()=> setCompleted(!completed)}>{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
+        <button onClick={()=> setCompleted(!completed)} class="second-button">{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
+        <div class="listContainer">
         <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted}/>
+        </div>
+        </section>
         </>
      );
 }
