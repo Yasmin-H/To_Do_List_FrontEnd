@@ -64,3 +64,9 @@
 .user-form button:hover {
   background-color: #ff8a5b;
 }
+
+.user-form .error-message {
+  color: red;
+  margin-top: 10px;
+  padding-left:10px;
+}

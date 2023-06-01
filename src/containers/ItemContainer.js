@@ -72,10 +72,13 @@ const ItemContainer = ({onSave, currentToDo}) => {
     return ( 
         <>
         <div className="container">
-         <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing} updateCompleted={updateCompleted}/>
-         <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem} currentToDo={currentToDo}/>
-         <button id="save" onClick={()=> onSave()}>Save</button>
+            <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing} updateCompleted={updateCompleted}/>
+            <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem} currentToDo={currentToDo}/>
          </div>
+         <div class="save-button">
+            <button onClick={()=> onSave()}>Save</button>
+         </div>
+         
         </>
      );
 }

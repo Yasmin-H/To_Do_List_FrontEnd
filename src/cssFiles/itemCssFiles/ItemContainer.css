@@ -5,18 +5,34 @@
     gap:20px
 }
 
-.container button#save{
+.save-button{
+    display: flex;
+    justify-content: center;
+}
+
+.save-button button{
+    font-size: 15px;
+    background-color: #25ced1;
+    border-radius: 5px;
+    border: none;
+    color: #ffff;
+    padding: 10px 20px;
+}
+
+/* button#save{
     font-size: 15px;
     background-color: #ea526f;
     border-radius: 5px;
     border: none;
     color: #ffff;
     padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* width: 100px; */
+/* } */ 
 
-}
-
-.container button#save:hover{
-    background-color: #25ced1;
+.save-button button:hover{
+    background-color: #ea526f;
     transition: background-color 0.5s;
-
 }

@@ -34,7 +34,7 @@ const ItemForm = ( {postItem, itemToUpdate, saveItem, currentToDo} ) => {
                 value={newItem.taskName}/>
 
             <input type="text"
-                placeholder="due date"
+                placeholder="dd/mm/yyyy"
                 onChange={handleChange}
                 name="dueDate"
                 value={newItem.dueDate}/> 

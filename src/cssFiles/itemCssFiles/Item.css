@@ -1,19 +1,19 @@
 .Task {
     display:flex;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 20px;
     /* margin-bottom: 5px; */
-    margin-top: 1px;
+    /* margin-top: 3px; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 }
 
 .Task h3{
-    font-weight: 300;
-   
+  font-weight: 300;
+  margin: 0px;
 }
 
 .Task[data-priority="HIGH"]:hover {
@@ -32,7 +32,8 @@
 .item-buttons{
     display: flex;
     gap: 10px;
-    flex:content;
+    /* align-items: end; */
+    /* flex:content; */
 }
 
 .item-buttons button {
@@ -84,3 +85,4 @@
     border-top: 1px solid #f1f1f1;
     margin: 10px 0;
   }
+

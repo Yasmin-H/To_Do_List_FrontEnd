@@ -72,22 +72,24 @@ const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
         <>
 
         <section class="background-colour">
-        <button onClick={()=> onLogout()} class="corner-button">Logout</button>
-        <form onSubmit={handleFormSubmit}>
-            <input 
-            type="text"
-            placeholder="enter list name"
-            value={newToDo.listName}
-            name="listName"
-            onChange={handleChange}/>
+            <button onClick={()=> onLogout()} class="logout-button">Logout</button>
+            <div class="selectors">
+                <form className="todo-form" onSubmit={handleFormSubmit}>
+                    <input 
+                    type="text"
+                    placeholder="enter list name"
+                    value={newToDo.listName}
+                    name="listName"
+                    onChange={handleChange}/>
 
-            <button type="submit" class="first-button">Create new list</button>
+                    <button type="submit" class="first-button">Create new list</button>
 
-        </form>
-        <button onClick={()=> setCompleted(!completed)} class="second-button">{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
-        <div class="listContainer">
-        <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted} selectToDo={selectToDo}/>
-        </div>
+                </form>
+                <button onClick={()=> setCompleted(!completed)} class="second-button">{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
+            </div>
+            <div class="listContainer">
+                <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted} selectToDo={selectToDo}/>
+            </div>
         </section>
         </>
      );
