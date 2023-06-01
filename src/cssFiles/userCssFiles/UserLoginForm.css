@@ -6,12 +6,15 @@
   height: 100vh;
 }
 
-/* .user-login-form input,
-.user-login-form button {
-  margin-bottom: 10px;
-} */
+.user-form-container{
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+}
 
-.user-login-form input {
+.user-login-form input,
+.user-login-form button {
   border:none;
   background-color: #f0879a;
   color: #ffffff;
@@ -22,11 +25,7 @@
 
 .user-login-form button {
   background-color: #ea526f;
-  border:none;
-  color: #ffffff;
-  padding: 5px 10px;
   cursor:pointer;
-  border-radius: 5px 5px;
   transition: background-color 0.2s;
 }
 

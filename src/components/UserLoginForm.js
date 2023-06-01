@@ -46,10 +46,26 @@ const UserLoginForm = ({users, onJoin, selectUser}) => {
 
 
 
-    return ( 
-        <div className="user-login-form">
-          <form id="login" onSubmit={handleFormSubmit}>
-            <input 
+    // return ( 
+    //     <div className="user-login-form">
+    //       <form id="login" onSubmit={handleFormSubmit}>
+    //         <input 
+    //           type="text"
+    //           placeholder="enter name..."
+    //           value={oldUser.name}
+    //           name="name"
+    //           onChange={handleChange}
+    //         />
+    //         <button type="submit">Login</button>
+    //       </form>
+    //     </div>
+    //   );
+
+    return (
+      <div className="user-login-form">
+        <form id="login" onSubmit={handleFormSubmit}>
+          <div className="user-form-container">
+            <input
               type="text"
               placeholder="enter name..."
               value={oldUser.name}
@@ -57,10 +73,11 @@ const UserLoginForm = ({users, onJoin, selectUser}) => {
               onChange={handleChange}
             />
             <button type="submit">Login</button>
-          </form>
-        </div>
-      );
-      
+          </div>
+        </form>
+      </div>
+    );
+    
 }
  
 export default UserLoginForm;
