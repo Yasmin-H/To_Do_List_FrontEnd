@@ -16,6 +16,19 @@
    
 }
 
+.Task[data-priority="HIGH"]:hover {
+    background-color: #ff8a8a;
+  }
+  
+  .Task[data-priority="MEDIUM"]:hover {
+    background-color: #ffcc8a;
+  }
+  
+  .Task[data-priority="low"]:hover {
+    background-color: #8aff8a;
+  }
+  
+
 .item-buttons{
     display: flex;
     gap: 10px;
