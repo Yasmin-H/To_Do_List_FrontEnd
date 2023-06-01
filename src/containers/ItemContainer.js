@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ItemList from "../components/ItemList";
 import ItemForm from "../components/ItemForm";
+import "../cssFiles/itemCssFiles/ItemContainer.css";
 
 const ItemContainer = ({onSave, currentToDo}) => {
 
@@ -70,9 +71,11 @@ const ItemContainer = ({onSave, currentToDo}) => {
 
     return ( 
         <>
+        <div className="container">
          <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing} updateCompleted={updateCompleted}/>
          <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem} currentToDo={currentToDo}/>
-         <button onClick={()=> onSave()}>Save</button>
+         <button id="save" onClick={()=> onSave()}>Save</button>
+         </div>
         </>
      );
 }
