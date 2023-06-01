@@ -3,7 +3,7 @@ import ItemList from "../components/ItemList";
 import ItemForm from "../components/ItemForm";
 
 
-const ItemContainer = ({onSave}) => {
+const ItemContainer = ({onSave, currentToDo}) => {
 
     const[items, setItems] = useState([]);
     const[itemToUpdate, setItemToUpdate] = useState(null);
@@ -55,10 +55,11 @@ const ItemContainer = ({onSave}) => {
         const fetchItems = async () => {
             const response = await fetch("http://localhost:8080/items");
             const data = await response.json();
-            setItems(data);
+            const listsItems = data.filter((item) => item.toDoList.id === currentToDo.id);
+            setItems(listsItems);
         }
         fetchItems()
-    }, [])
+    }, [currentToDo])
 
     const selectItemForEditing = (item) => {
           setItemToUpdate(item);
@@ -71,7 +72,7 @@ const ItemContainer = ({onSave}) => {
     return ( 
         <>
          <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing} updateCompleted={updateCompleted}/>
-         <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem}/>
+         <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem} currentToDo={currentToDo}/>
          <button onClick={()=> onSave()}>Save</button>
         </>
      );

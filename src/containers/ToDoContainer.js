@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import ToDoList from "../components/ToDoList";
 
-const ToDoContainer = ({onEdit, onLogout, currentUser}) => {
+const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
 
     const[toDoLists, setToDoLists] = useState([]);
-    const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [1], userIds: [1]})
+    const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [], userIds: [currentUser]})
     const [completed, setCompleted] = useState(false);
+    
 
     const postList = async (newList) => {
         const response = await fetch("http://localhost:8080/lists", {
@@ -14,9 +15,9 @@ const ToDoContainer = ({onEdit, onLogout, currentUser}) => {
             body: JSON.stringify(newList)
         })
         const allLists = await response.json();
-        const savedList = allLists.pop();
-        setToDoLists([...toDoLists, savedList])
-        console.log(savedList)
+        // const savedList = allLists.pop();
+        setToDoLists([...toDoLists, allLists])
+        console.log(allLists);
     }
 
     const deleteList = async (id) => {
@@ -44,7 +45,9 @@ const ToDoContainer = ({onEdit, onLogout, currentUser}) => {
         const fetchLists = async () => {
             const response = await fetch(`http://localhost:8080/lists?completed=${completed}`);
             const data = await response.json();
-            const usersLists = data.filter((toDoList) => { return toDoList.users.some((user) => user.id === currentUser.id)});
+            const usersLists = data.filter((toDoList) => {
+                return toDoList.users.some((user) => user.id === currentUser.id)
+            });
             setToDoLists(usersLists);
         }
         fetchLists()
@@ -68,7 +71,7 @@ const ToDoContainer = ({onEdit, onLogout, currentUser}) => {
     return ( 
         <>
         <button onClick={()=> onLogout()}>Logout</button>
-         <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
             <input 
             type="text"
             placeholder="enter list name"
@@ -79,7 +82,7 @@ const ToDoContainer = ({onEdit, onLogout, currentUser}) => {
 
         </form>
         <button onClick={()=> setCompleted(!completed)}>{!completed ? "Show Completed Lists" : "Show Incompleted Lists"}</button>
-        <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted}/>
+        <ToDoList toDoLists={toDoLists} onEdit={onEdit} deleteList={deleteList} updateCompleted={updateCompleted} selectToDo={selectToDo}/>
         </>
      );
 }

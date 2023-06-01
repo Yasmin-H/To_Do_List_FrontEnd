@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 
-const ItemForm = ( {postItem, itemToUpdate, saveItem} ) => {
+const ItemForm = ( {postItem, itemToUpdate, saveItem, currentToDo} ) => {
 
-    const [newItem, setNewItem] = useState({taskName: "", dueDate: "", priority: "", listId:1})
+    const [newItem, setNewItem] = useState({taskName: "", dueDate: "", priority: "", listId: currentToDo.id})
 
     useEffect(() => {
         if(itemToUpdate !== null && itemToUpdate.id){
