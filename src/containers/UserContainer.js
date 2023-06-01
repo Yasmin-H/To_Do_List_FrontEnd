@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import UserForm from "../components/UserForm";
 import UserLoginForm from "../components/UserLoginForm";
-import '../cssFiles/userCssFiles/UserContainer.css';
+import "../cssFiles/userCssFiles/UserContainer.css";
+
 
 const UserContainer = ({onJoin, selectUser}) => {
 
@@ -38,16 +39,18 @@ const UserContainer = ({onJoin, selectUser}) => {
     }
     
     const renderLoginButton = () => {
-        return !login ? <button onClick={loginClick}>Login</button>
+        return !login ? <button className="login-button" onClick={loginClick}>Login</button>
             : null;
     }
 
     return (
         <>
+        <div className="user-container">
         {renderLoginButton()}
         {renderedForm()}
+        </div>
         </>
-        );
+    );     
 }
  
 export default UserContainer;
