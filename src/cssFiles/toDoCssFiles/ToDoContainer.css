@@ -18,7 +18,7 @@
 
 .second-button{
     position:fixed;
-    top: 12%;
+    top: 14%;
     left: 50%;
 }
 
@@ -34,6 +34,7 @@
     margin: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; */
+    padding-top: 10px;
   }
 
   .list{
@@ -41,11 +42,12 @@
     /* width: 100px;
     height: 100px;
     margin:10px; */
-    width: calc(33.33% - 20px);
-  height: 100px;
-  background-color: #ccc;
+    /* width: calc(33.33% - 20px); */
+    width: 240px;
+  height: 300px;
+  background-color: #dfdede;
   margin: 10px;
-  /* border:1px solid black;  */
+  border:1px solid black; 
 
   }
 
@@ -55,5 +57,18 @@
 
   .delete-button{
     background-color: #EA526F;
+  }
+
+  .bottom-buttons{
+    text-align: center;
+    position: relative;
+    top: 70%;
+    left: 1%;
+
+  }
+
+  h2{
+    text-align: center;
+    font-family:monospace;
   }
   
