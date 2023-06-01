@@ -16,9 +16,14 @@ function App() {
   const handleSelectUser = (user) => setCurrentUser(user);
   const handleSelectToDo = (toDo) => setCurrentToDo(toDo);
 
+  // const updateCurrentUser = (toDo) => {
+  //   const newCurrentUser = {...currentUser, masterList: [...currentUser.masterList, toDo]};
+  //   setCurrentUser(newCurrentUser);
+  // }
+
   const renderedContainer = () => {
     return container.user ? <UserContainer onJoin={changeToTodo} selectUser={handleSelectUser}/>
-          : container.toDo ? <ToDoContainer  onEdit={changeToItem} onLogout={changeToUser} currentUser={currentUser} selectToDo={handleSelectToDo}/>
+          : container.toDo ? <ToDoContainer  onEdit={changeToItem} onLogout={changeToUser} currentUser={currentUser} selectToDo={handleSelectToDo} />
           : container.item ? <ItemContainer onSave={changeToTodo} currentToDo={currentToDo}/>
           : null;
   }

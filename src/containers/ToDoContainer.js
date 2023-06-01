@@ -4,7 +4,7 @@ import ToDoList from "../components/ToDoList";
 const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
 
     const[toDoLists, setToDoLists] = useState([]);
-    const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [], userIds: [currentUser]})
+    const [newToDo, setNewToDo] = useState ({listName : "", itemIds: [], userIds: [currentUser.id]})
     const [completed, setCompleted] = useState(false);
     
 
@@ -15,9 +15,9 @@ const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
             body: JSON.stringify(newList)
         })
         const allLists = await response.json();
-        // const savedList = allLists.pop();
-        setToDoLists([...toDoLists, allLists])
-        console.log(allLists);
+        const savedList = allLists.pop();
+        setToDoLists([...toDoLists, savedList])
+        console.log(savedList);
     }
 
     const deleteList = async (id) => {
@@ -65,9 +65,8 @@ const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
         let copiedList = {...newToDo};
         copiedList[propertyName]= event.target.value;
         setNewToDo(copiedList);
-
-
     }
+
     return ( 
         <>
         <button onClick={()=> onLogout()}>Logout</button>
