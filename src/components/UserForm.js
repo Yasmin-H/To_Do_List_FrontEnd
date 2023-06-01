@@ -28,10 +28,26 @@ const UserForm = ({users, postUser, onJoin, selectUser}) => {
 
     }
 
-    return ( 
-        <div className="user-form">
-          <form onSubmit={handleFormSubmit}>
-            <input 
+    // return ( 
+    //     <div className="user-form">
+    //       <form onSubmit={handleFormSubmit}>
+    //         <input 
+    //           type="text"
+    //           placeholder="enter name..."
+    //           value={newUser.name}
+    //           name="name"
+    //           onChange={handleChange}
+    //         />
+    //         <button type="submit">Join</button>
+    //       </form>
+    //     </div>
+    //   );
+
+    return (
+      <div className="user-form">
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-container">
+            <input
               type="text"
               placeholder="enter name..."
               value={newUser.name}
@@ -39,13 +55,11 @@ const UserForm = ({users, postUser, onJoin, selectUser}) => {
               onChange={handleChange}
             />
             <button type="submit">Join</button>
-          </form>
-        </div>
-      );
+          </div>
+        </form>
+      </div>
+    );
+  };
       
-
-
-
-}
  
 export default UserForm;

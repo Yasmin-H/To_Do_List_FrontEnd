@@ -12,9 +12,24 @@
 } */
 
 .user-login-form input {
-  background-color: rgb(116, 151, 116);
+  border:none;
+  background-color: #f0879a;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 2px;
 }
 
 .user-login-form button {
-  background-color: rgb(209, 186, 209);
+  background-color: #ea526f;
+  border:none;
+  color: #ffffff;
+  padding: 5px 10px;
+  cursor:pointer;
+  border-radius: 5px 5px;
+  transition: background-color 0.2s;
+}
+
+.user-login-form button:hover {
+  background-color: #ff8a5b;
 }
