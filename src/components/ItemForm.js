@@ -14,7 +14,7 @@ const ItemForm = ( {postItem, itemToUpdate, saveItem, currentToDo} ) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         saveItem(newItem);
-        setNewItem({taskName: "", dueDate: "", priority: "", listId:1})
+        setNewItem({taskName: "", dueDate: "", priority: "", listId:currentToDo.id})
     }
 
     const handleChange = (event) => {

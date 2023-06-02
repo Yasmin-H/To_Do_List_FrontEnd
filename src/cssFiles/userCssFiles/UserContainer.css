@@ -9,10 +9,11 @@
   background-color: #ea526f;
   border:none;
   color: #ffffff;
-  padding: 5px 10px;
+  padding: 10px 20px;
   cursor:pointer;
   border-radius: 5px 5px;
   transition: background-color 0.2s ;
+  font-size: 16px;
 }
 
 .login-button:hover {

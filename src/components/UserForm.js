@@ -9,7 +9,9 @@ const UserForm = ({users, postUser, onJoin, selectUser}) => {
 
     const handleFormSubmit = (event) => {
       event.preventDefault()
-      if(users.findIndex((user) => user.name === newUser.name) < 0){
+      if(newUser.name === "" ){
+        setMessage("Please enter a username");
+      } else if (users.findIndex((user) => user.name === newUser.name) < 0) {
         postUser(newUser);
         console.log("user added")
         setMessage("User has been successfully created. You can now Log in!");
