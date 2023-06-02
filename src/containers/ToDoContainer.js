@@ -16,9 +16,11 @@ const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
             body: JSON.stringify(newList)
         })
         const allLists = await response.json();
+        // console.log(allLists);
         const savedList = allLists.pop();
         setToDoLists([...toDoLists, savedList])
         console.log(savedList);
+        
     }
 
     const deleteList = async (id) => {
@@ -56,6 +58,7 @@ const ToDoContainer = ({onEdit, onLogout, currentUser, selectToDo}) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
+        console.log(currentUser);
         if(newToDo.listName !== ""){
             postList(newToDo);
         }

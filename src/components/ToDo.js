@@ -14,18 +14,27 @@ const ToDo = ({toDo, onEdit, deleteList, updateCompleted, selectToDo}) => {
         selectToDo(toDo);
         onEdit();
     }
+
+    const showItems = toDo.items.map((item) => {
+        return <li>{item.taskName}</li>
+    })
  
     return ( 
         <>
-        <div class="list">
-        <h2>{toDo.listName}</h2>
+        <div className="list">
+            <h2>{toDo.listName}</h2>
+                <ul>
+                    {showItems}
+                </ul>
 
-        <div class="bottom-buttons">
-            <button onClick={() => clickEdit()} class="edit-button">Edit</button>
-            <button onClick={() => deleteList(toDo.id)} class="delete-button">Delete</button>
-            <input type="checkbox" name="completed" onChange={changeCompleteStatus} checked={isCompleted} />
-            <label for="completed">Completed</label>
-        </div>
+            <div class="bottom-buttons">
+                <button onClick={() => clickEdit()} class="edit-button">Edit</button>
+                <button onClick={() => deleteList(toDo.id)} class="delete-button">Delete</button>
+                <div>
+                    <input type="checkbox" name="completed" onChange={changeCompleteStatus} checked={isCompleted} />
+                    <label for="completed">Completed</label>
+                </div>
+            </div>
         </div>
         </>
      );

@@ -7,6 +7,8 @@ const ItemContainer = ({onSave, currentToDo}) => {
 
     const[items, setItems] = useState([]);
     const[itemToUpdate, setItemToUpdate] = useState(null);
+    const [sortByDueDate, setSortByDueDate] = useState(false);
+    const [sortByPriority, setSortByPriority] = useState(false);
     
     const postItem = async (newItem) => {
         const response = await fetch("http://localhost:8080/items", {
@@ -65,13 +67,53 @@ const ItemContainer = ({onSave, currentToDo}) => {
           setItemToUpdate(item);
     }
 
-      const saveItem = (item) => {
+    const saveItem = (item) => {
         item.id ? updateItem(item): postItem(item);
     }
+
+    const sortItemsByDueDate = () => {
+        const sortedItems = [...items];
+        sortedItems.sort((firstItem, secondItem) => {
+          if (firstItem.dueDate < secondItem.dueDate) {
+            return sortByDueDate ? 1 : -1;
+          } else if (firstItem.dueDate > secondItem.dueDate) {
+            return sortByDueDate ? -1 : 1;
+          } else {
+            return 0;
+          }
+        });
+        setItems(sortedItems);
+        setSortByDueDate(!sortByDueDate);
+    };
+    
+    const sortItemsByPriority = () => {
+        const sortedItems = [...items];
+        sortedItems.sort((firstItem, secondItem) => {
+          const priorityValues = { LOW: 0, MEDIUM: 1, HIGH: 2 };
+          const firstPriority = priorityValues[firstItem.priority];
+          const secondPriority = priorityValues[secondItem.priority];
+    
+          if (firstPriority < secondPriority) {
+            return sortByPriority ? 1 : -1;
+          } else if (firstPriority > secondPriority) {
+            return sortByPriority ? -1 : 1;
+          } else {
+            return 0;
+          }
+        });
+        setItems(sortedItems);
+        setSortByPriority(!sortByPriority);
+    };
+
 
     return ( 
         <>
         <div className="container">
+            <div className="column-titles">
+                <p>Task name</p>
+                <button onClick={sortItemsByDueDate}>Due Date {sortByDueDate ? "↑" : "↓"}</button>
+                <button onClick={sortItemsByPriority}>Priority {sortByPriority ? "↓" : "↑"}</button>
+            </div>
             <ItemList items={items} deleteItem={deleteItem} selectItemForEditing={selectItemForEditing} updateCompleted={updateCompleted}/>
             <ItemForm  itemToUpdate={itemToUpdate} saveItem={saveItem} currentToDo={currentToDo}/>
          </div>

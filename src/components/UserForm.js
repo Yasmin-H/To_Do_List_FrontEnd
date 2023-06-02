@@ -5,24 +5,19 @@ import "../cssFiles/userCssFiles/UserForm.css";
 const UserForm = ({users, postUser, onJoin, selectUser}) => {
 
     const [newUser, setNewUser] = useState({name: "", masterList: []});
-    const [errorMessage, setErrorMessage] = useState("");
-
+    const [message, setMessage] = useState("");
 
     const handleFormSubmit = (event) => {
       event.preventDefault()
       if(users.findIndex((user) => user.name === newUser.name) < 0){
         postUser(newUser);
         console.log("user added")
-        selectUser(newUser)
-        onJoin();
+        setMessage("User has been successfully created. You can now Log in!");
       } else {
         console.log("user already exists");
-      // } alert("User already exists. Please enter a different username.");
-      }setErrorMessage("User already exists. Please enter a different username.");
+        setMessage("User already exists. Please enter a different username.");
+      }
     }
-
-    
-
 
     const handleChange = (event) => {
       let propertyName = event.target.name;
@@ -45,7 +40,7 @@ const UserForm = ({users, postUser, onJoin, selectUser}) => {
             <button type="submit">Join</button>
           </div>
         </form>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        <div className="message">{message}</div>
       </div>
     );
   };

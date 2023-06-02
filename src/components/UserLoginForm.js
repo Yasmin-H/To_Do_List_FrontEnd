@@ -5,16 +5,18 @@ import "../cssFiles/userCssFiles/UserLoginForm.css";
 const UserLoginForm = ({users, onJoin, selectUser}) => {
 
     const [oldUser, setOldUser] = useState({name: "", masterList: []});
+    const [message, setMessage] = useState("");
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
         const user = users.find((user) => user.name === oldUser.name);
         if(user){
-            console.log("user found")
-            selectUser(user)
+            console.log("user found");
+            selectUser(user);
             onJoin();
         } else{
             console.log("user does not exist");
+            setMessage("User does not exist. Go back and create new user.");
         }
     }
 
@@ -24,42 +26,7 @@ const UserLoginForm = ({users, onJoin, selectUser}) => {
         let copiedUser = {...oldUser};
         copiedUser[propertyName]= event.target.value;
         setOldUser(copiedUser);
-
     }
-
-
-    // return ( 
-    //     <>
-    //     <form id= "login" onSubmit={handleFormSubmit}>
-    //         <input 
-    //         type="text"
-    //         placeholder="enter name..."
-    //         value={oldUser.name}
-    //         name="name"
-    //         onChange={handleChange}/>
-    //         <button type="submit">Login</button>
-
-    //     </form>
-        
-    //     </>
-    //  );
-
-
-
-    // return ( 
-    //     <div className="user-login-form">
-    //       <form id="login" onSubmit={handleFormSubmit}>
-    //         <input 
-    //           type="text"
-    //           placeholder="enter name..."
-    //           value={oldUser.name}
-    //           name="name"
-    //           onChange={handleChange}
-    //         />
-    //         <button type="submit">Login</button>
-    //       </form>
-    //     </div>
-    //   );
 
     return (
       <div className="user-login-form">
@@ -75,6 +42,7 @@ const UserLoginForm = ({users, onJoin, selectUser}) => {
             <button type="submit">Login</button>
           </div>
         </form>
+        <div className="message">{message}</div>
       </div>
     );
     

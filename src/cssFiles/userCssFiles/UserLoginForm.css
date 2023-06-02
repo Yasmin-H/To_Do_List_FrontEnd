@@ -32,3 +32,10 @@
 .user-login-form button:hover {
   background-color: #ff8a5b;
 }
+
+.user-login-form .message {
+  color: red;
+  margin-top: 10px;
+  padding-left:10px;
+  -webkit-text-stroke-width: 0.9px;
+}

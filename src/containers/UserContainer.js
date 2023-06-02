@@ -4,10 +4,9 @@ import UserLoginForm from "../components/UserLoginForm";
 import "../cssFiles/userCssFiles/UserContainer.css";
 
 
-const UserContainer = ({onJoin, selectUser}) => {
+const UserContainer = ({onJoin, selectUser, currentUser}) => {
 
     const [users , setUsers] = useState([]);
-
     const [login, setLogin] = useState(false);
 
     useEffect(() => {
@@ -26,11 +25,11 @@ const UserContainer = ({onJoin, selectUser}) => {
             body: JSON.stringify(newUser)
         })
         const savedUser = await response.json();
-        setUsers([...users, savedUser])
+        setUsers([...users, savedUser]);
     }
 
     const loginClick = () => {
-      setLogin(true);
+      setLogin(!login);
     }
 
     const renderedForm = () => {
@@ -40,15 +39,15 @@ const UserContainer = ({onJoin, selectUser}) => {
     
     const renderLoginButton = () => {
         return !login ? <button className="login-button" onClick={loginClick}>Login</button>
-            : null;
+            : <button className="login-button" onClick={loginClick}>Go Back</button>;
     }
 
     return (
         <>
-        <div className="user-container">
-        {renderLoginButton()}
-        {renderedForm()}
-        </div>
+            <div className="user-container">
+                {renderLoginButton()}
+                {renderedForm()}
+            </div>
         </>
     );     
 }
