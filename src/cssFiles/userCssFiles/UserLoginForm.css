@@ -24,6 +24,10 @@
   font-size: 16px;
 }
 
+.user-login-form input{
+  color: #041245;
+}
+
 .user-login-form button {
   background-color: #ea526f;
   cursor: pointer;
@@ -36,7 +40,7 @@
 }
 
 .user-login-form .message {
-  color: #041245;;
+  color: #041245;
   margin-top: 10px;
   padding-left:10px;
   -webkit-text-stroke-width: 0.9px;

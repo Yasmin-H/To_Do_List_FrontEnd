@@ -24,6 +24,10 @@
   font-size: 16px;
 }
 
+.user-form input{
+  color: #041245;
+}
+
 .user-form button {
   background-color: #ea526f;
   cursor: pointer;
