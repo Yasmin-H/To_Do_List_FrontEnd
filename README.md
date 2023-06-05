@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# CheckMate: Keep calm and check it off!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a front-end development of a back-end To-Do list API that contains a User List and task Item object. In this project we've used 
 
-## Available Scripts
+## Back end
 
-In the project directory, you can run:
+The back-end uses a User object with a User containing an ID, a name and a list object, each user can create multiple lists 
+The Item object has a task name, a due date, a ‘completion’ boolean and a priority enum which was created separately. 
+The List is a DTO that has an id, takes a UserId, an item ID and also has boolean for completion.
+
+## Front end 
+
+The front-end uses a User container, a List container and an Item container that are rendered at the press of a button. 
+
+
 
 ### `npm start`
 
