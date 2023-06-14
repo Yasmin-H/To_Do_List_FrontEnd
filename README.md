@@ -10,7 +10,9 @@ The List is a DTO that has an id, takes a UserId, an item ID and also has boolea
 
 ## Front end 
 
-The front-end uses a User container, a List container and an Item container that are rendered at the press of a button. 
+The front-end uses a User container, a List container and an Item container that are rendered at the press of a button. This wireframe displays the ccomponent relationships and also a rendering of our anticipated product. 
+
+![Wireframe diagram](ExcaliDraw.png)
 
 
 
